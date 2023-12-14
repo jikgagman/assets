@@ -1,0 +1,47 @@
+<table>
+    <thead>
+        <tr>
+            <th>날짜</th>
+            <th>등록자</th>
+            <th>습득 장소</th>
+            <th>유실물</th>
+            <th>이름</th>
+            <th>번호</th>
+            <th>보관함</th>
+            <th>처리</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr>
+            <td>2023-11-20</td>
+            <td>김우진</td>
+            <td>오송역</td>
+            <td>가방</td>
+            <td>김우진</td>
+            <td>01012345678</td>
+            <td>보관함</td>
+            <td>처리버튼</td>
+        </tr>
+        <tr>
+            <td>2023-11-20</td>
+            <td>김우진</td>
+            <td>오송역</td>
+            <td>가방</td>
+            <td>김우진</td>
+            <td>01012345678</td>
+            <td>보관함</td>
+            <td>처리버튼</td>
+        </tr>
+        <tr>
+            <td>2023-11-20</td>
+            <td>김우진</td>
+            <td>오송역</td>
+            <td>가방</td>
+            <td>김우진</td>
+            <td>01012345678</td>
+            <td>보관함</td>
+            <td>처리버튼</td>
+        </tr>
+    </tbody>
+</table>
