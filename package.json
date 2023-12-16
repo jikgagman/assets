@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/web-n/Nodejs.git"
+    "url": "git+https://github.com/jikgagman/osong-Lost-System.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/web-n/Nodejs/issues"
+    "url": "https://github.com/jikgagman/osong-Lost-System/issues"
   },
-  "homepage": "https://github.com/web-n/Nodejs#readme",
+  "homepage": "https://github.com/jikgagman/osong-Lost-Systems#readme",
   "dependencies": {
     "mysql": "^2.18.1",
     "sanitize-html": "^1.27.5"
