@@ -37,23 +37,26 @@ var app = http.createServer(function(request,response){
     }else if(pathname === '/delete_process'){
         instorage.delete_process(request, response);
     }else if(pathname === '/receipt_process'){
-        var body = '';
-        request.on('data', function(data){
-            body = body + data;
-        });
-        request.on('end', function(){
-            var post = qs.parse(body);
-            db.query('INSERT INTO receipt SELECT * FROM instorage WHERE id=?', [post.id], function(error, result){
-                db.query('DELETE FROM instorage WHERE id=?', [post.id], function(error, result){
-                if(error){throw error;}
-                response.writeHead(302, {Location: `/`});
-                response.end();
-                })
-            })
-        })
+        instorage.receipt_process(request, response);
+    }else if(pathname === '/ttas_process'){
+        instorage.ttas_process(request, response);
+    }else if(pathname === '/police_process'){
+        instorage.police_process(request, response);
     }else { //없는페이지
         response.writeHead(404);
         response.end('Not found');
     }
+    if (request.url === 'style.css'){
+        fs.readFile('style.css', 'utf8', (err, data) => {
+          if (err) {
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
+            res.write('404 Not Found');
+            return res.end();
+          }
+          res.writeHead(200, { 'Content-Type': 'text/css' });
+          res.write(data);
+          return res.end();
+        });
+      }
 });
 app.listen(3000);
