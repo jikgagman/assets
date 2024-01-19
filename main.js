@@ -1,4 +1,61 @@
-var http = require('http');
+const express = require('express')
+var instorage = require('./lib/instorage.js');
+var bodyParser = require('body-parser');
+const compression = require('compression');
+const app = express()
+const port = 3000
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(compression());
+
+app.get('/', (request, response) => {
+    instorage.home(request, response);
+})
+app.get('/page/:pageId', (request, response) => {
+    if(request.params.pageId === '보관중'){
+        tbname = 'instorage';
+    }else if(request.params.pageId === '본인인도'){
+        tbname = 'receipt';
+    }
+    else if(request.params.pageId === '타역이관'){
+        tbname = 'ttas';
+    }else if(request.params.pageId === '경찰서이관'){
+        tbname = 'police';
+    }else if(request.params.pageId === '삭제'){
+        tbname = 'del';
+    }
+    instorage.page(request, response);
+})
+app.post('/create_process', (request, response) => {
+    instorage.create_process(request, response);
+})
+app.get('/update/:pageId', (request, response) => {
+    instorage.update(request, response);
+})
+app.post('/update_process', (request, response) => {
+    instorage.update_process(request, response);
+})
+app.post('/delete_process', (request, response) => {
+    instorage.delete_process(request, response);
+})
+app.post('/receipt_process', (request, response) => {
+    instorage.receipt_process(request, response);
+})
+app.post('/ttas_process', (request, response) => {
+    instorage.ttas_process(request, response);
+})
+app.post('/police_process', (request, response) => {
+    instorage.police_process(request, response);
+})
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
+
+
+
+
+/*var http = require('http');
 var url = require('url');
 var qs = require('querystring');
 var template = require('./lib/temlplate.js');
@@ -46,17 +103,5 @@ var app = http.createServer(function(request,response){
         response.writeHead(404);
         response.end('Not found');
     }
-    if (request.url === 'style.css'){
-        fs.readFile('style.css', 'utf8', (err, data) => {
-          if (err) {
-            res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.write('404 Not Found');
-            return res.end();
-          }
-          res.writeHead(200, { 'Content-Type': 'text/css' });
-          res.write(data);
-          return res.end();
-        });
-      }
 });
-app.listen(3000);
+app.listen(3000);*/
