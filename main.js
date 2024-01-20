@@ -5,6 +5,7 @@ const compression = require('compression');
 const app = express()
 const port = 3000
 
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(compression());
 
@@ -47,6 +48,9 @@ app.post('/ttas_process', (request, response) => {
 app.post('/police_process', (request, response) => {
     instorage.police_process(request, response);
 })
+app.use((req, res, next) => {
+    res.status(404).send("Sorry can't find that!")
+  })
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
